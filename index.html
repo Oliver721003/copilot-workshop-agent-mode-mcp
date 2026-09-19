@@ -11,6 +11,14 @@
       <div class="card">
         <header class="card-header">
           <h1>我的待辦清單</h1>
+          <!-- 主題切換按鈕：淺色時顯示「🌙 深色模式」，深色時顯示「☀️ 淺色模式」 -->
+          <button
+            id="theme-toggle"
+            class="theme-toggle"
+            aria-label="切換深色模式"
+          >
+            🌙 深色模式
+          </button>
         </header>
 
         <section class="card-body">
@@ -23,6 +31,13 @@
             />
             <button id="add-btn" type="submit">新增</button>
           </form>
+
+          <!-- 篩選按鈕：全部 / 未完成 / 已完成 -->
+          <div class="filters" role="toolbar" aria-label="篩選待辦">
+            <button class="filter-btn active" data-filter="all">全部</button>
+            <button class="filter-btn" data-filter="active">未完成</button>
+            <button class="filter-btn" data-filter="done">已完成</button>
+          </div>
 
           <ul id="todo-list" class="todo-list" aria-live="polite"></ul>
 

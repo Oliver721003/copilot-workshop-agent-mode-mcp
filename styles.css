@@ -5,6 +5,10 @@
   --accent: #10b981;
   --muted: #9ca3af;
   --text: #0f172a;
+  --border: #e6e9ef;
+  --muted-border: #f0f2f5;
+  --card-border-top: #f3f4f6;
+  --surface-gradient: rgba(0, 0, 0, 0.02);
   --radius: 12px;
   --shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
 }
@@ -45,10 +49,28 @@ body {
 
 .card-header {
   padding: 20px 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
 }
 .card-header h1 {
   margin: 0;
   font-size: 20px;
+}
+
+/* 主題切換按鈕 */
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--text);
+  font-weight: 600;
+}
+.theme-toggle:active {
+  transform: translateY(1px);
 }
 
 .card-body {
@@ -63,7 +85,7 @@ body {
   flex: 1;
   padding: 10px 12px;
   border-radius: 8px;
-  border: 1px solid #e6e9ef;
+  border: 1px solid var(--border);
   font-size: 15px;
 }
 .todo-form button {
@@ -91,8 +113,8 @@ body {
   padding: 10px;
   border-radius: 8px;
   margin-bottom: 8px;
-  border: 1px solid #f0f2f5;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), transparent);
+  border: 1px solid var(--muted-border);
+  background: linear-gradient(180deg, var(--surface-gradient), transparent);
 }
 .todo-left {
   display: flex;
@@ -129,8 +151,43 @@ body {
 
 .card-footer {
   padding: 12px 16px;
-  border-top: 1px solid #f3f4f6;
+  border-top: 1px solid var(--card-border-top);
   color: var(--muted);
+}
+
+/* 篩選按鈕樣式 */
+.filters {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+.filter-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--text);
+}
+.filter-btn.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+/* 深色主題覆寫：使用變數，不要在各處寫死色碼 */
+body.dark {
+  --bg: #0b1220;
+  --card-bg: #0f1724;
+  --primary: #60a5fa;
+  --accent: #34d399;
+  --muted: #94a3b8;
+  --text: #e6eef8;
+  --border: #1f2937;
+  --muted-border: #111827;
+  --card-border-top: #0b1220;
+  --surface-gradient: rgba(255, 255, 255, 0.02);
+  --shadow: 0 6px 18px rgba(2, 6, 23, 0.6);
 }
 
 /* RWD */
