@@ -11,9 +11,11 @@ const form = document.getElementById("todo-form");
 const input = document.getElementById("todo-input");
 const listEl = document.getElementById("todo-list");
 const emptyTip = document.getElementById("empty-tip");
+const statusTip = document.getElementById("status-tip");
 const countEl = document.getElementById("incomplete-count");
 const themeToggle = document.getElementById("theme-toggle");
 const filterBtns = Array.from(document.querySelectorAll(".filter-btn"));
+let statusTipTimer = null;
 
 // 讀取 localStorage
 function loadTodos() {
@@ -70,6 +72,19 @@ function applyTheme(theme) {
 // 儲存到 localStorage
 function saveTodos() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+}
+
+function showStatus(message) {
+  if (statusTipTimer) {
+    clearTimeout(statusTipTimer);
+  }
+
+  statusTip.textContent = message;
+  statusTip.hidden = false;
+  statusTipTimer = window.setTimeout(() => {
+    statusTip.hidden = true;
+    statusTipTimer = null;
+  }, 3500);
 }
 
 // 更新未完成數量顯示
@@ -193,6 +208,14 @@ listEl.addEventListener("change", function (e) {
     const id = target.dataset.id;
     const done = target.checked;
     toggleDone(id, done);
+    if (
+      (currentFilter === "active" && done) ||
+      (currentFilter === "done" && !done)
+    ) {
+      showStatus(
+        "該項目已更新，但目前的篩選條件會隱藏它；切換到「全部」可查看。"
+      );
+    }
   }
 });
 

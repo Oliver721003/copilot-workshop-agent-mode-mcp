@@ -9,6 +9,7 @@
   --muted-border: #f0f2f5;
   --card-border-top: #f3f4f6;
   --surface-gradient: rgba(0, 0, 0, 0.02);
+  --status-tip-bg: #eff6ff;
   --radius: 12px;
   --shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
 }
@@ -149,6 +150,15 @@ body {
   margin: 12px 0;
 }
 
+.status-tip {
+  margin: 12px 0 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--status-tip-bg);
+  color: var(--text);
+  font-size: 14px;
+}
+
 .card-footer {
   padding: 12px 16px;
   border-top: 1px solid var(--card-border-top);
@@ -187,6 +197,7 @@ body.dark {
   --muted-border: #111827;
   --card-border-top: #0b1220;
   --surface-gradient: rgba(255, 255, 255, 0.02);
+  --status-tip-bg: #172554;
   --shadow: 0 6px 18px rgba(2, 6, 23, 0.6);
 }
 
